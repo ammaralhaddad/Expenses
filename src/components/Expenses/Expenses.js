@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import "./Expenses.css";
+import "./ExpenseList.css";
 import ExpenseItem from "./ExpenseItem";
 import ExpensesFilter from "./ExpensesFilter";
 import Card from "../UI/Card";
@@ -24,7 +25,9 @@ export default function Expenses(props) {
         onChangeFilter={filterChangeHandler}
       />
       <Card className="expenses">
-        {filterExpenses.length === 0 && <p>No expenses.</p>}
+        <div className="expenses-list__fallback">
+          {filterExpenses.length === 0 && <p>No expenses.</p>}
+        </div>
         {filterExpenses.length > 0 &&
           filterExpenses.map((expense) => (
             <ExpenseItem
