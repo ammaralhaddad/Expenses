@@ -24,14 +24,16 @@ export default function Expenses(props) {
         onChangeFilter={filterChangeHandler}
       />
       <Card className="expenses">
-        {filterExpenses.map((expense) => (
-          <ExpenseItem
-            key={expense.id}
-            title={expense.title}
-            amount={expense.amount}
-            date={expense.date}
-          />
-        ))}
+        {filterExpenses.length === 0 && <p>No expenses.</p>}
+        {filterExpenses.length > 0 &&
+          filterExpenses.map((expense) => (
+            <ExpenseItem
+              key={expense.id}
+              title={expense.title}
+              amount={expense.amount}
+              date={expense.date}
+            />
+          ))}
       </Card>
     </div>
   );
